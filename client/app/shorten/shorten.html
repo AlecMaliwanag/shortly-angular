@@ -1,6 +1,17 @@
-<div id='container'>
-<!-- Your code here -->
+<div class='navigation'>
+<ul>
+  <li><a href='#/links' class='index'>All Links</a></li>
+  <li><a href='#/shorten' class='create'>Shorten</a></li>
+</ul>
+  <a href='/#/signout' class='logout'>Logout</a>
+</div>
 
+<div id='container'>
+<form>
+  <input ng-model='url'>
+  <input type='submit' value='Shorten' ng-click ="addLink(url); url=''" >
+  </form>
+  <div class='message'></div>
 </div>
 
 
