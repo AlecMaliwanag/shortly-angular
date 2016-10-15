@@ -1,7 +1,7 @@
 <div class='navigation'>
 <ul>
-  <li><a href='#/links' class='index'>All Links</a></li>
-  <li><a href='#/shorten' class='create'>Shorten</a></li>
+  <li><a ui-sref='links' class='index'>All Links</a></li>
+  <li><a ui-sref='shorten' class='create'>Shorten</a></li>
 </ul>
   <button ng-click='signOut()' type='button' class='logout'>Logout</button>
 </div>
@@ -10,14 +10,6 @@
   <form>
     <input ng-model='filterInput' ng-change="change(link)">
   </form>
-  <div ng-repeat="link in data.links | orderBy: '-visits' | filter : filterInput">
-    <div class='info link'>
-      <img src='/assets/redirect_icon.png'/>
-      <div class='visits'><span class='count'>{{link.visits}}</span>Visits</div>
-      <div class='title'>{{link.title}}</div>
-      <div class='original'>{{link.dataurl}}</div>
-      <a href='{{link.baseUrl}}/{{link.code}}'>{{link.baseUrl}}/{{link.code}}</a>
-    </div>
-</div>
-
+  <div ng-repeat="link in data.links | orderBy: '-visits' | filter : filterInput" shortened-link='link'/>
+  <div shortened-link></div>
 </div>

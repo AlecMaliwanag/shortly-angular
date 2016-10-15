@@ -9,12 +9,12 @@
     <h1>Shortly</h1>
 
     <!-- the ng-view directive is where our templates will be loaded into when naviagted to -->
-    <div ng-view></div>
-      <a href="#/signup">signup</a>
-      <a href ="#/signin">login</a>
+    <div ui-view></div>
+      <a ui-sref="signup">signup</a>
+      <a ui-sref="signin">login</a>
     
     <script src="lib/angular/angular.js"></script>
-    <script src="lib/angular-route/angular-route.js"></script>
+    <script src="lib/angular-ui-router/release/angular-ui-router.js"></script>
 
     <script src="app/auth/auth.js"></script>
     <script src="app/links/links.js"></script>
