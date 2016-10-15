@@ -3,19 +3,21 @@
   <li><a href='#/links' class='index'>All Links</a></li>
   <li><a href='#/shorten' class='create'>Shorten</a></li>
 </ul>
-  <a href='/#/signout' class='logout'>Logout</a>
+  <button ng-click='signOut()' type='button' class='logout'>Logout</button>
 </div>
 
 <div id='container' class = 'links'>
-
-    <div ng-repeat="link in data.links">
-      <div class='info link'>
-        <img src='/assets/redirect_icon.png'/>
-        <div class='visits'><span class='count'>{{link.visits}}</span>Visits</div>
-        <div class='title'>{{link.title}}</div>
-        <div class='original'>{{link.dataurl}}</div>
-        <a href='{{link.baseUrl}}/{{link.code}}'>{{link.baseUrl}}/{{link.code}}</a>
-      </div>
-  </div>
+  <form>
+    <input ng-model='filterInput' ng-change="change(link)">
+  </form>
+  <div ng-repeat="link in data.links | orderBy: '-visits' | filter : filterInput">
+    <div class='info link'>
+      <img src='/assets/redirect_icon.png'/>
+      <div class='visits'><span class='count'>{{link.visits}}</span>Visits</div>
+      <div class='title'>{{link.title}}</div>
+      <div class='original'>{{link.dataurl}}</div>
+      <a href='{{link.baseUrl}}/{{link.code}}'>{{link.baseUrl}}/{{link.code}}</a>
+    </div>
+</div>
 
 </div>

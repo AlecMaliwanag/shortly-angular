@@ -7,24 +7,28 @@ angular.module('shortly.auth', [])
   $scope.user = {};
 
   $scope.signin = function () {
-    Auth.signin($scope.user)
-      .then(function (token) {
-        $window.localStorage.setItem('com.shortly', token);
-        $location.path('/shorten');//remember to change this back to links
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
+    if ($scope.user.username !== '' && $scope.user.password !== '') {
+      Auth.signin($scope.user)
+        .then(function (token) {
+          $window.localStorage.setItem('com.shortly', token);
+          $location.path('/shorten');//remember to change this back to links
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
+    }
   };
 
   $scope.signup = function () {
-    Auth.signup($scope.user)
-      .then(function (token) {
-        $window.localStorage.setItem('com.shortly', token);
-        $location.path('/shorten');//remember to change this later
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
+    if ($scope.user.username !== '' && $scope.user.password !== '') {
+      Auth.signup($scope.user)
+        .then(function (token) {
+          $window.localStorage.setItem('com.shortly', token);
+          $location.path('/shorten');//remember to change this later
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
+    }
   };
 });
